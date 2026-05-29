@@ -215,6 +215,55 @@ particlesJS("particles-js",{
     }
 });
 </script>
+    <!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCdGjI3Cqw_lw8O8KPMK1CpOiFfVslkAo4",
+  authDomain: "carrentlv-c03b7.firebaseapp.com",
+  projectId: "carrentlv-c03b7",
+  storageBucket: "carrentlv-c03b7.firebasestorage.app",
+  messagingSenderId: "348473215612",
+  appId: "1:348473215612:web:03e9addf7d9987941717f9"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+
+async function submitRental(){
+
+    const inputs = document.querySelectorAll("input");
+    const selects = document.querySelectorAll("select");
+
+    try{
+
+        await db.collection("rentals").add({
+
+            ingameName: inputs[0].value,
+            discord: inputs[1].value,
+            phone: inputs[2].value,
+            vehicle: selects[0].value,
+            time: selects[1].value,
+            createdAt: new Date()
+
+        });
+
+        alert("Sikeres bérlés!");
+
+        inputs.forEach(i => i.value = "");
+        selects.forEach(s => s.selectedIndex = 0);
+
+    }catch(error){
+
+        console.error(error);
+        alert("Hiba történt!");
+
+    }
+}
+</script>
 
 </body>
 </html>
