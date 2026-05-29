@@ -281,6 +281,36 @@ select option{
     }
 
 }
+@media(max-width:700px){
+
+    .topbar{
+        flex-direction:column;
+        height:auto;
+        padding:20px;
+        gap:15px;
+    }
+
+    .topbar h1{
+        font-size:22px;
+        text-align:center;
+    }
+
+    .modern-form{
+        width:90%;
+    }
+
+}
+
+/* PARTICLE HÁTTÉR */
+
+#particles-js{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+}
 </style>
 </head>
 
@@ -417,6 +447,64 @@ select option{
     </button>
 
 </div>
+
+<div id="particles-js"></div>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+particlesJS("particles-js", {
+
+  particles: {
+
+    number: {
+      value: 80
+    },
+
+    color: {
+      value: "#00d9ff"
+    },
+
+    shape: {
+      type: "circle"
+    },
+
+    opacity: {
+      value: 0.5
+    },
+
+    size: {
+      value: 3
+    },
+
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#00d9ff",
+      opacity: 0.4,
+      width: 1
+    },
+
+    move: {
+      enable: true,
+      speed: 2
+    }
+  },
+
+  interactivity: {
+
+    events: {
+
+      onhover: {
+        enable: true,
+        mode: "repulse"
+      }
+    }
+  },
+
+  retina_detect: true
+});
+</script>
 
 </body>
 </html>
