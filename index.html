@@ -133,6 +133,68 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     transform:translateY(-4px);
     box-shadow:0 0 20px rgba(0,217,255,0.5);
 }
+.rental-form{
+    width:700px;
+    margin:60px auto;
+    background:rgba(255,255,255,0.05);
+    padding:35px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
+}
+
+.rental-form h2{
+    color:#00d9ff;
+    margin-bottom:25px;
+    font-size:32px;
+}
+
+.form-group{
+    margin-bottom:22px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:10px;
+    font-size:15px;
+    color:white;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#141d27;
+    color:white;
+    font-size:15px;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    box-shadow:0 0 15px rgba(0,217,255,0.4);
+}
+
+.submit-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#00d9ff,#00a8ff);
+    color:black;
+    font-weight:700;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 20px rgba(0,217,255,0.5);
+}
 </style>
 </head>
 
@@ -246,28 +308,26 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         </div>
 
         <!-- Bérlés -->
-        <div class="rental-form">
+        <div class="modern-form">
+    <h2><i class="fa-solid fa-car"></i> Jármű Bérlés</h2>
 
-    <h2>Jármű Bérlés</h2>
-
-    <div class="form-group">
-        <label>Ingame Név</label>
-        <input type="text" placeholder="Add meg az ingame neved">
+    <div class="input-box">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Ingame neved">
     </div>
 
-    <div class="form-group">
-        <label>Discord Név</label>
-        <input type="text" placeholder="Add meg a discord neved">
+    <div class="input-box">
+        <i class="fa-brands fa-discord"></i>
+        <input type="text" placeholder="Discord neved">
     </div>
 
-    <div class="form-group">
-        <label>Telefonszám</label>
-        <input type="text" placeholder="Add meg a telefonszámod">
+    <div class="input-box">
+        <i class="fa-solid fa-phone"></i>
+        <input type="text" placeholder="Telefonszámod">
     </div>
 
-    <div class="form-group">
-        <label>Melyik jármű?</label>
-
+    <div class="input-box">
+        <i class="fa-solid fa-car-side"></i>
         <select>
             <option>Maverick</option>
             <option>Crod C550 Towtruck</option>
@@ -275,9 +335,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         </select>
     </div>
 
-    <div class="form-group">
-        <label>Bérlési Idő</label>
-
+    <div class="input-box">
+        <i class="fa-solid fa-clock"></i>
         <select>
             <option>1 Nap</option>
             <option>1 Hét</option>
@@ -287,6 +346,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     </div>
 
     <button class="submit-btn">
+        <i class="fa-solid fa-paper-plane"></i>
         Bérlés Leadása
     </button>
 
