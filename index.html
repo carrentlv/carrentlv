@@ -16,10 +16,17 @@ body{
     color:white;
 }
 
-/* egyszerűsítve a lényeg miatt */
+.topbar{
+    padding:20px;
+    background:#141d27;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
 .modern-form{
     width:400px;
-    margin:50px auto;
+    margin:40px auto;
     padding:20px;
     background:#141d27;
     border-radius:15px;
@@ -32,6 +39,8 @@ body{
 input, select{
     width:100%;
     padding:10px;
+    border:none;
+    border-radius:5px;
 }
 
 button{
@@ -47,34 +56,24 @@ button{
 
 <body>
 
-<!-- LOGIN / REG TESZT -->
-<div class="modern-form">
-
-<h2>Bejelentkezés / Regisztráció</h2>
-
-<input id="email" placeholder="Email">
-<input id="password" type="password" placeholder="Jelszó">
-
-<button onclick="registerUser()">Regisztráció</button>
-<button onclick="loginUser()">Bejelentkezés</button>
-
+<div class="topbar">
+    CarRentLV - Jármű Bérlés
 </div>
 
-<!-- BÉRLÉS -->
 <div class="modern-form">
 
-<h2>Bérlés</h2>
+<h2>Bérlés űrlap</h2>
 
 <div class="input-box">
 <input placeholder="Ingame név">
 </div>
 
 <div class="input-box">
-<input placeholder="Discord">
+<input placeholder="Discord név">
 </div>
 
 <div class="input-box">
-<input placeholder="Telefon">
+<input placeholder="Telefonszám">
 </div>
 
 <div class="input-box">
@@ -98,11 +97,9 @@ button{
 
 </div>
 
-<!-- FIREBASE -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -115,32 +112,12 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
 const db = getFirestore(app);
 
-// 🔐 REGISZTRÁCIÓ
-window.registerUser = async function(){
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  await createUserWithEmailAndPassword(auth, email, password);
-  alert("Sikeres regisztráció!");
-}
-
-// 🔐 LOGIN
-window.loginUser = async function(){
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  await signInWithEmailAndPassword(auth, email, password);
-  alert("Sikeres belépés!");
-}
-
-// 🚗 BÉRLÉS
 window.submitRental = async function(){
 
-  const inputs = document.querySelectorAll(".input-box input");
-  const selects = document.querySelectorAll(".input-box select");
+  const inputs = document.querySelectorAll("input");
+  const selects = document.querySelectorAll("select");
 
   await addDoc(collection(db, "rentals"), {
     ingameName: inputs[0].value,
@@ -161,4 +138,3 @@ window.submitRental = async function(){
 
 </body>
 </html>
-
