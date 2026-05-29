@@ -25,7 +25,7 @@ body{
     overflow-x:hidden;
 }
 
-/* TOPBAR */
+/* TOP */
 .topbar{
     width:100%;
     height:85px;
@@ -40,10 +40,6 @@ body{
     font-size:28px;
     font-weight:700;
     color:#00d9ff;
-}
-
-.topbar h1{
-    font-size:30px;
 }
 
 /* INFO */
@@ -136,24 +132,18 @@ input, select{
 
 <body>
 
-<!-- PARTICLES -->
 <div id="particles-js"></div>
 
-<!-- TOP -->
 <div class="topbar">
     <div class="logo">CarRentLV</div>
     <h1>Jármű Bérlés</h1>
 </div>
 
-<!-- INFO -->
 <div class="info-box">
     <h2>Fontos Információk</h2>
-    <p>Jármű bérlés előre fizetéssel történik.</p>
-    <p>Sérülés esetén kártérítés van.</p>
-    <p>Késés = extra díj.</p>
+    <p>Bérlés előre fizetéssel történik.</p>
 </div>
 
-<!-- VEHICLES -->
 <div class="vehicle-grid">
 
     <div class="vehicle-card">
@@ -162,58 +152,21 @@ input, select{
         <div class="price-list">
             <p><span>1 Nap</span><span>45.000$</span></p>
             <p><span>1 Hét</span><span>250.000$</span></p>
-            <p><span>2 Hét</span><span>450.000$</span></p>
             <p><span>1 Hónap</span><span>850.000$</span></p>
         </div>
     </div>
 
     <div class="vehicle-card">
-        <h3>Maverick 2</h3>
-        <img src="heli.png">
-        <div class="price-list">
-            <p><span>1 Nap</span><span>45.000$</span></p>
-            <p><span>1 Hét</span><span>250.000$</span></p>
-            <p><span>2 Hét</span><span>450.000$</span></p>
-            <p><span>1 Hónap</span><span>850.000$</span></p>
-        </div>
-    </div>
-
-    <div class="vehicle-card">
-        <h3>Maverick 3</h3>
-        <img src="heli.png">
-        <div class="price-list">
-            <p><span>1 Nap</span><span>45.000$</span></p>
-            <p><span>1 Hét</span><span>250.000$</span></p>
-            <p><span>2 Hét</span><span>450.000$</span></p>
-            <p><span>1 Hónap</span><span>850.000$</span></p>
-        </div>
-    </div>
-
-    <div class="vehicle-card">
-        <h3>Crod C150 Behemoth</h3>
+        <h3>Crod C150</h3>
         <img src="crod.png">
         <div class="price-list">
             <p><span>1 Nap</span><span>20.000$</span></p>
             <p><span>1 Hét</span><span>120.000$</span></p>
-            <p><span>2 Hét</span><span>220.000$</span></p>
-            <p><span>1 Hónap</span><span>450.000$</span></p>
-        </div>
-    </div>
-
-    <div class="vehicle-card">
-        <h3>Crod C550 Towtruck</h3>
-        <img src="vonti.png">
-        <div class="price-list">
-            <p><span>1 Nap</span><span>25.000$</span></p>
-            <p><span>1 Hét</span><span>150.000$</span></p>
-            <p><span>2 Hét</span><span>290.000$</span></p>
-            <p><span>1 Hónap</span><span>500.000$</span></p>
         </div>
     </div>
 
 </div>
 
-<!-- FORM -->
 <div class="modern-form">
 
 <h2>Jármű Bérlés</h2>
@@ -233,10 +186,7 @@ input, select{
 <div class="input-box">
 <select>
 <option>Maverick</option>
-<option>Maverick 2</option>
-<option>Maverick 3</option>
-<option>Crod C150 Behemoth</option>
-<option>Crod C550 Towtruck</option>
+<option>Crod C150</option>
 </select>
 </div>
 
@@ -244,7 +194,6 @@ input, select{
 <select>
 <option>1 Nap</option>
 <option>1 Hét</option>
-<option>2 Hét</option>
 <option>1 Hónap</option>
 </select>
 </div>
@@ -255,13 +204,12 @@ Bérlés Leadása
 
 </div>
 
-<!-- PARTICLES SCRIPT -->
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script>
 particlesJS("particles-js", {
   particles: {
-    number: { value: 80 },
+    number: { value: 60 },
     color: { value: "#00d9ff" },
     shape: { type: "circle" },
     opacity: { value: 0.5 },
@@ -269,40 +217,36 @@ particlesJS("particles-js", {
     line_linked: {
       enable: true,
       distance: 150,
-      color: "#00d9ff",
-      opacity: 0.4,
-      width: 1
+      color: "#00d9ff"
     },
     move: { enable: true, speed: 2 }
   }
 });
 </script>
 
-<!-- FIREBASE -->
-<script type="module">
+<!-- FIREBASE (FIXED) -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
+<script>
 const firebaseConfig = {
   apiKey: "AIzaSyCdGjI3Cqw_lw8O8KPMK1CpOiFfVslkAo4",
   authDomain: "carrentlv-c03b7.firebaseapp.com",
   projectId: "carrentlv-c03b7",
   storageBucket: "carrentlv-c03b7.firebasestorage.app",
   messagingSenderId: "348473215612",
-  appId: "1:348473215612:web:03e9addf7d9987941717f9",
-  measurementId: "G-NFXPXRQEM2"
+  appId: "1:348473215612:web:03e9addf7d9987941717f9"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
 window.submitRental = async function(){
 
   const inputs = document.querySelectorAll("input");
   const selects = document.querySelectorAll("select");
 
-  await addDoc(collection(db, "rentals"), {
+  await db.collection("rentals").add({
     ingameName: inputs[0].value,
     discord: inputs[1].value,
     phone: inputs[2].value,
@@ -316,7 +260,6 @@ window.submitRental = async function(){
   inputs.forEach(i => i.value = "");
   selects.forEach(s => s.selectedIndex = 0);
 }
-
 </script>
 
 </body>
