@@ -74,13 +74,65 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 }
 
 .price-list p{
-    background:rgba(255,255,255,0.05);
-    padding:12px;
-    border-radius:12px;
-    display:flex;
-    justify-content:space-between;
+  .rental-form{
+    width:700px;
+    margin:50px auto;
+    background:rgba(255,255,255,0.04);
+    padding:30px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,0.08);
 }
 
+.rental-form h2{
+    margin-bottom:25px;
+    color:#00d9ff;
+    font-size:32px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:10px;
+    font-size:15px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:#141d27;
+    color:white;
+    font-size:15px;
+    outline:none;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    box-shadow:0 0 15px rgba(0,217,255,0.4);
+}
+
+.submit-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#00d9ff,#00a8ff);
+    color:black;
+    font-weight:700;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 20px rgba(0,217,255,0.5);
+}
 </style>
 </head>
 
