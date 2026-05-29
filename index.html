@@ -136,8 +136,14 @@ input, select{
 <div class="info-box">
     <h2>Fontos Információk</h2>
     <p>Minden jármű elérhető és bérelhető.</p>
-    <p>A járművek kizárólag előzetes foglalás alapján vehetők át. A foglalás véglegesítéséhez biztonsági letét szükséges, amely a jármű sértetlen és megfelelő állapotban történő visszaadását követően kerül feloldásra.
-    A bérleti idő kezdete a jármű átvételének időpontjától számítódik. A hosszabbítás kizárólag előzetes egyeztetés alapján lehetséges.</p>
+    <p>
+        A járművek kizárólag előzetes foglalás alapján vehetők át.
+        A foglalás véglegesítéséhez biztonsági letét szükséges,
+        amely a jármű sértetlen és megfelelő állapotban történő
+        visszaadását követően kerül feloldásra.
+        A bérleti idő kezdete a jármű átvételének időpontjától számítódik.
+        A hosszabbítás kizárólag előzetes egyeztetés alapján lehetséges.
+    </p>
 </div>
 
 <!-- VEHICLES -->
@@ -150,7 +156,7 @@ input, select{
             <p><span>1 Nap</span><span>150.000$</span></p>
             <p><span>1 Hét</span><span>550.000$</span></p>
             <p><span>2 Hét</span><span>1.000.000$</span></p>
-            <p><span>1 Hónap</span><span>1.650.00$</span></p>
+            <p><span>1 Hónap</span><span>1.650.000$</span></p>
         </div>
     </div>
 
@@ -161,7 +167,7 @@ input, select{
             <p><span>1 Nap</span><span>150.000$</span></p>
             <p><span>1 Hét</span><span>550.000$</span></p>
             <p><span>2 Hét</span><span>1.000.000$</span></p>
-            <p><span>1 Hónap</span><span>1.650.00$</span></p>
+            <p><span>1 Hónap</span><span>1.650.000$</span></p>
         </div>
     </div>
 
@@ -172,11 +178,11 @@ input, select{
             <p><span>1 Nap</span><span>150.000$</span></p>
             <p><span>1 Hét</span><span>550.000$</span></p>
             <p><span>2 Hét</span><span>1.000.000$</span></p>
-            <p><span>1 Hónap</span><span>1.650.00$</span></p>
+            <p><span>1 Hónap</span><span>1.650.000$</span></p>
         </div>
     </div>
-    
-     <div class="vehicle-card">
+
+    <div class="vehicle-card">
         <h3>Crod C550 vontató</h3>
         <img src="vonti.png">
         <div class="price-list">
@@ -186,8 +192,8 @@ input, select{
             <p><span>1 Hónap</span><span>800.000$</span></p>
         </div>
     </div>
-    
-      <div class="vehicle-card">
+
+    <div class="vehicle-card">
         <h3>Crod C150</h3>
         <img src="crod.png">
         <div class="price-list">
@@ -197,7 +203,7 @@ input, select{
             <p><span>1 Hónap</span><span>900.000$</span></p>
         </div>
     </div>
-    
+
     <div class="vehicle-card">
         <h3>Inductor Make S</h3>
         <img src="tesla.png">
@@ -213,6 +219,7 @@ input, select{
 
 <!-- FORM -->
 <div class="modern-form">
+
     <h2>Bérlés</h2>
 
     <input id="name" placeholder="Név">
@@ -238,6 +245,7 @@ input, select{
     <button class="submit-btn" onclick="submitRental()">
         Bérlés
     </button>
+
 </div>
 
 <!-- PARTICLES -->
@@ -257,7 +265,10 @@ particlesJS("particles-js",{
             color:"#00d9ff",
             opacity:0.4
         },
-        move:{enable:true,speed:2}
+        move:{
+            enable:true,
+            speed:2
+        }
     }
 });
 </script>
@@ -267,19 +278,34 @@ particlesJS("particles-js",{
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
+
 const firebaseConfig = {
+
   apiKey: "AIzaSyCdGjI3Cqw_lw8O8KPMK1CpOiFfVslkAo4",
   authDomain: "carrentlv-c03b7.firebaseapp.com",
   projectId: "carrentlv-c03b7",
   storageBucket: "carrentlv-c03b7.appspot.com",
   messagingSenderId: "348473215612",
   appId: "1:348473215612:web:03e9addf7d9987941717f9"
+
 };
 
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
+/* SAJÁT USER ID */
+let userId = localStorage.getItem("userId");
+
+if(!userId){
+
+    userId = crypto.randomUUID();
+
+    localStorage.setItem("userId", userId);
+
+}
+
+/* BÉRLÉS */
 async function submitRental(){
 
     const name = document.getElementById("name").value;
@@ -289,19 +315,38 @@ async function submitRental(){
     const time = document.getElementById("time").value;
 
     if(!name || !discord || !phone){
+
         alert("Tölts ki minden mezőt!");
         return;
+
     }
 
     try{
 
-        await db.collection("rentals").add({
-            name,
-            discord,
-            phone,
-            vehicle,
-            time,
+        /* megnézzük bérelt-e már */
+        const rentalRef =
+            db.collection("rentals").doc(userId);
+
+        const rentalDoc =
+            await rentalRef.get();
+
+        if(rentalDoc.exists){
+
+            alert("Már adtál le bérlést!");
+            return;
+
+        }
+
+        /* mentés */
+        await rentalRef.set({
+
+            name: name,
+            discord: discord,
+            phone: phone,
+            vehicle: vehicle,
+            time: time,
             createdAt: new Date()
+
         });
 
         alert("Sikeres bérlés!");
@@ -313,10 +358,12 @@ async function submitRental(){
     }catch(error){
 
         console.error(error);
+
         alert("Hiba történt a mentés során!");
 
     }
 }
+
 </script>
 
 </body>
