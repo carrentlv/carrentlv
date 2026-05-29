@@ -9,47 +9,307 @@
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-body{
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
     margin:0;
-    font-family:Poppins;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
     background:#0b1118;
     color:white;
+    overflow-x:hidden;
 }
+
+/* TOPBAR */
 
 .topbar{
-    padding:20px;
-    background:#141d27;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
+    width:100%;
+    height:85px;
+    background:linear-gradient(90deg,#07151d,#0d4f52,#07151d);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 40px;
+    box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
-.modern-form{
-    width:400px;
-    margin:40px auto;
-    padding:20px;
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#00d9ff;
+}
+
+.topbar h1{
+    font-size:30px;
+}
+
+.user-box{
+    display:flex;
+    gap:10px;
+}
+
+.user-box button{
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+    background:#00d9ff;
+    color:black;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.user-box button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(0,217,255,0.5);
+}
+
+/* INFO */
+
+.info-box{
+    width:90%;
+    margin:30px auto;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:20px;
+}
+
+.info-box h2{
+    margin-bottom:15px;
+    color:#00d9ff;
+}
+
+.info-box p{
+    margin-bottom:10px;
+    color:#cfcfcf;
+}
+
+/* VEHICLES */
+
+.vehicle-grid{
+    width:90%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.vehicle-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:25px;
+    padding:25px;
+    transition:0.4s;
+    backdrop-filter:blur(10px);
+}
+
+.vehicle-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(0,217,255,0.3);
+}
+
+.vehicle-card h3{
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+.vehicle-card img{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+    transition:0.4s;
+}
+
+.vehicle-card:hover img{
+    transform:scale(1.08);
+}
+
+.price-list{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.price-list p{
+    display:flex;
+    justify-content:space-between;
     background:#141d27;
-    border-radius:15px;
+    padding:14px;
+    border-radius:12px;
+}
+
+/* FORM */
+
+.modern-form{
+    width:500px;
+    margin:60px auto;
+    background:rgba(255,255,255,0.05);
+    padding:35px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 25px rgba(0,0,0,0.3);
+}
+
+.modern-form h2{
+    color:#00d9ff;
+    margin-bottom:25px;
+    font-size:32px;
+    text-align:center;
 }
 
 .input-box{
-    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    background:#141d27;
+    padding:15px;
+    border-radius:14px;
+    margin-bottom:20px;
+    border:1px solid transparent;
+    transition:0.3s;
 }
 
-input, select{
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:5px;
+.input-box:hover{
+    border-color:#00d9ff;
+    box-shadow:0 0 15px rgba(0,217,255,0.3);
 }
 
-button{
+.input-box i{
+    margin-right:12px;
+    color:#00d9ff;
+    font-size:18px;
+}
+
+.input-box{
+    display:flex;
+    align-items:center;
+    background:#141d27;
+    padding:15px;
+    border-radius:14px;
+    margin-bottom:20px;
+    border:1px solid transparent;
+    transition:0.3s;
+}
+
+.input-box:hover{
+    border-color:#00d9ff;
+    box-shadow:0 0 15px rgba(0,217,255,0.3);
+}
+
+.input-box i{
+    margin-right:12px;
+    color:#00d9ff;
+    font-size:18px;
+}
+
+.input-box input,
+.input-box select{
     width:100%;
-    padding:12px;
-    background:#00d9ff;
+    background:#141d27;
     border:none;
+    outline:none;
+    color:white;
+    font-size:15px;
+    appearance:none;
     cursor:pointer;
-    margin-top:10px;
+}
+
+/* SELECT JAVÍTÁS */
+
+.input-box select:hover{
+    background:#0f1720;
+}
+
+.input-box select:focus{
+    background:#0f1720;
+    color:white;
+}
+
+select{
+    background:#141d27 !important;
+    color:white !important;
+}
+
+select option{
+    background:#141d27 !important;
+    color:white !important;
+}
+
+.submit-btn{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#00d9ff,#00a8ff);
+    color:black;
+    font-weight:700;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 20px rgba(0,217,255,0.5);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .topbar{
+        flex-direction:column;
+        height:auto;
+        padding:20px;
+        gap:15px;
+    }
+
+    .topbar h1{
+        font-size:22px;
+        text-align:center;
+    }
+
+    .modern-form{
+        width:90%;
+    }
+
+}
+@media(max-width:700px){
+
+    .topbar{
+        flex-direction:column;
+        height:auto;
+        padding:20px;
+        gap:15px;
+    }
+
+    .topbar h1{
+        font-size:22px;
+        text-align:center;
+    }
+
+    .modern-form{
+        width:90%;
+    }
+
+}
+
+/* PARTICLE HÁTTÉR */
+
+#particles-js{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
 }
 </style>
 </head>
@@ -57,49 +317,199 @@ button{
 <body>
 
 <div class="topbar">
-    CarRentLV - Jármű Bérlés
+    <div class="logo">CarRentLV</div>
+
+    <h1>Jármű Bérlés Információk</h1>
+
+    <div class="user-box">
+        <button>Bejelentkezés</button>
+        <button>Regisztráció</button>
+    </div>
+</div>
+
+<div class="info-box">
+    <h2>Fontos Információk</h2>
+
+    <p>A jármű bérlés minden esetben előre fizetéssel történik.</p>
+    <p>A bérlés végén a járművet sérülésmentesen kell visszahozni.</p>
+    <p>Késés esetén extra díjat számolunk fel.</p>
+</div>
+
+<div class="vehicle-grid">
+
+    <div class="vehicle-card">
+        <h3>Maverick</h3>
+        <img src="heli.png">
+
+        <div class="price-list">
+            <p><span>1 Nap</span><span>45.000$</span></p>
+            <p><span>1 Hét</span><span>250.000$</span></p>
+            <p><span>2 Hét</span><span>450.000$</span></p>
+            <p><span>1 Hónap</span><span>850.000$</span></p>
+        </div>
+    </div>
+    
+      <div class="vehicle-card">
+        <h3>Maverick</h3>
+        <img src="heli.png">
+
+        <div class="price-list">
+            <p><span>1 Nap</span><span>45.000$</span></p>
+            <p><span>1 Hét</span><span>250.000$</span></p>
+            <p><span>2 Hét</span><span>450.000$</span></p>
+            <p><span>1 Hónap</span><span>850.000$</span></p>
+        </div>
+    </div>
+
+      <div class="vehicle-card">
+        <h3>Maverick</h3>
+        <img src="heli.png">
+
+        <div class="price-list">
+            <p><span>1 Nap</span><span>45.000$</span></p>
+            <p><span>1 Hét</span><span>250.000$</span></p>
+            <p><span>2 Hét</span><span>450.000$</span></p>
+            <p><span>1 Hónap</span><span>850.000$</span></p>
+        </div>
+    </div>
+
+    <div class="vehicle-card">
+        <h3>Crod C150 Behemoth</h3>
+        <img src="crod.png">
+
+        <div class="price-list">
+            <p><span>1 Nap</span><span>20.000$</span></p>
+            <p><span>1 Hét</span><span>120.000$</span></p>
+            <p><span>2 Hét</span><span>220.000$</span></p>
+            <p><span>1 Hónap</span><span>450.000$</span></p>
+        </div>
+    </div>
+
+    <div class="vehicle-card">
+        <h3>Crod C550 Towtruck</h3>
+        <img src="vonti.png">
+
+        <div class="price-list">
+            <p><span>1 Nap</span><span>25.000$</span></p>
+            <p><span>1 Hét</span><span>150.000$</span></p>
+            <p><span>2 Hét</span><span>290.000$</span></p>
+            <p><span>1 Hónap</span><span>500.000$</span></p>
+        </div>
+    </div>
+
 </div>
 
 <div class="modern-form">
 
-<h2>Bérlés űrlap</h2>
+    <h2><i class="fa-solid fa-car"></i> Jármű Bérlés</h2>
 
-<div class="input-box">
-<input placeholder="Ingame név">
+    <div class="input-box">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Ingame neved">
+    </div>
+
+    <div class="input-box">
+        <i class="fa-brands fa-discord"></i>
+        <input type="text" placeholder="Discord neved">
+    </div>
+
+    <div class="input-box">
+        <i class="fa-solid fa-phone"></i>
+        <input type="text" placeholder="Telefonszámod">
+    </div>
+
+    <div class="input-box">
+        <i class="fa-solid fa-car-side"></i>
+
+        <select>
+            <option>Maverick</option>
+            <option>Maverick 2</option>
+            <option>Maverick 3</option>
+            <option>Crod C550 Towtruck</option>
+            <option>Crod C150 Behemoth</option>
+        </select>
+    </div>
+
+    <div class="input-box">
+        <i class="fa-solid fa-clock"></i>
+
+        <select>
+            <option>1 Nap</option>
+            <option>1 Hét</option>
+            <option>2 Hét</option>
+            <option>1 Hónap</option>
+        </select>
+    </div>
+
+    <button class="submit-btn" onclick="submitRental()">
+        <i class="fa-solid fa-paper-plane"></i>
+        Bérlés Leadása
+    </button>
+
 </div>
 
-<div class="input-box">
-<input placeholder="Discord név">
-</div>
+<div id="particles-js"></div>
 
-<div class="input-box">
-<input placeholder="Telefonszám">
-</div>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
-<div class="input-box">
-<select>
-<option>Maverick</option>
-<option>Crod C150</option>
-<option>Crod C550</option>
-</select>
-</div>
+<script>
+particlesJS("particles-js", {
 
-<div class="input-box">
-<select>
-<option>1 Nap</option>
-<option>1 Hét</option>
-<option>2 Hét</option>
-<option>1 Hónap</option>
-</select>
-</div>
+  particles: {
 
-<button onclick="submitRental()">Bérlés Leadása</button>
+    number: {
+      value: 80
+    },
 
-</div>
+    color: {
+      value: "#00d9ff"
+    },
+
+    shape: {
+      type: "circle"
+    },
+
+    opacity: {
+      value: 0.5
+    },
+
+    size: {
+      value: 3
+    },
+
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#00d9ff",
+      opacity: 0.4,
+      width: 1
+    },
+
+    move: {
+      enable: true,
+      speed: 2
+    }
+  },
+
+  interactivity: {
+
+    events: {
+
+      onhover: {
+        enable: true,
+        mode: "repulse"
+      }
+    }
+  },
+
+  retina_detect: true
+});
+</script>
 
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -112,29 +522,43 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 const db = getFirestore(app);
 
+// 🔥 REG
+window.registerUser = async function(email, password){
+  await createUserWithEmailAndPassword(auth, email, password);
+  alert("Sikeres regisztráció!");
+}
+
+// 🔥 LOGIN
+window.loginUser = async function(email, password){
+  await signInWithEmailAndPassword(auth, email, password);
+  alert("Sikeres belépés!");
+}
+
+// 🔥 BÉRLÉS MENTÉS
 window.submitRental = async function(){
 
-  const inputs = document.querySelectorAll("input");
-  const selects = document.querySelectorAll("select");
+  const inputs = document.querySelectorAll(".input-box input");
+  const selects = document.querySelectorAll(".input-box select");
+
+  const ingameName = inputs[0].value;
+  const discord = inputs[1].value;
+  const phone = inputs[2].value;
+
+  const vehicle = selects[0].value;
+  const time = selects[1].value;
 
   await addDoc(collection(db, "rentals"), {
-    ingameName: inputs[0].value,
-    discord: inputs[1].value,
-    phone: inputs[2].value,
-    vehicle: selects[0].value,
-    time: selects[1].value,
+    ingameName,
+    discord,
+    phone,
+    vehicle,
+    time,
     createdAt: new Date()
   });
 
   alert("Sikeres bérlés!");
 
-  inputs.forEach(i => i.value = "");
-  selects.forEach(s => s.selectedIndex = 0);
-}
-
-</script>
-
-</body>
-</html>
+  inputs.forEac
