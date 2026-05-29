@@ -212,11 +212,34 @@ body{
 .input-box input,
 .input-box select{
     width:100%;
-    background:none;
+    background:#141d27;
     border:none;
     outline:none;
     color:white;
     font-size:15px;
+    appearance:none;
+    cursor:pointer;
+}
+
+/* SELECT JAVÍTÁS */
+
+.input-box select:hover{
+    background:#0f1720;
+}
+
+.input-box select:focus{
+    background:#0f1720;
+    color:white;
+}
+
+select{
+    background:#141d27 !important;
+    color:white !important;
+}
+
+select option{
+    background:#141d27 !important;
+    color:white !important;
 }
 
 .submit-btn{
