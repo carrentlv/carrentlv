@@ -5,5 +5,9 @@ const firebaseConfig = {
   storageBucket: "carrentlv-c03b7.firebasestorage.app",
   messagingSenderId: "348473215612",
   appId: "1:348473215612:web:03e9addf7d9987941717f9",
-  measurementId: "G-NFXPXRQEM2"
+  measurementId: "G-NFXPXRQME2"
 };
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
